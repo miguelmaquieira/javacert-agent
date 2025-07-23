@@ -87,6 +87,12 @@
         confidence.</p>
     </header>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden"
+      onclick="closeModal()">
+      <img id="modalImage" class="max-w-full max-h-full rounded shadow-lg" src="" alt="Expanded image">
+    </div>
+
     <section class="mb-12">
       <h2 class="text-2xl font-semibold mb-4">🤔 Why Java CertCoach?</h2>
       <p class="mb-4">Passing the Java certification is challenging. We make it achievable — and even enjoyable.</p>
@@ -200,7 +206,9 @@
       <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         <!-- Card 1: AI Assistant -->
         <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
-          <img src="/images/ai-assistant-preview.png" alt="AI Assistant" class="rounded mb-3">
+          <img src="/images/ai-assistant-preview.png" alt="AI Assistant"
+            class="rounded mb-3 cursor-pointer hover:opacity-80"
+            onclick="openModal('/images/ai-assistant-preview.png')">
           <h3 class="font-semibold text-lg mb-1">🤖 AI-Powered Q&A</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300">Ask real exam questions and get clear, Java-specific
             answers.</p>
@@ -208,7 +216,9 @@
 
         <!-- Card 2: Quiz Feedback -->
         <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
-          <img src="/images/quiz-feedback-preview.png" alt="Quiz Feedback" class="rounded mb-3">
+          <img src="/images/quiz-feedback-preview.png" alt="Quiz Feedback"
+            class="rounded mb-3 cursor-pointer hover:opacity-80"
+            onclick="openModal('/images/quiz-feedback-preview.png')">
           <h3 class="font-semibold text-lg mb-1">🧪 Quiz Feedback</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300">See correct answers instantly with explanations designed
             to teach.</p>
@@ -216,7 +226,9 @@
 
         <!-- Card 3: Progress Tracker -->
         <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
-          <img src="/images/progress-tracking-preview.png" alt="Progress Tracker" class="rounded mb-3">
+          <img src="/images/progress-tracking-preview.png" alt="Progress Tracker"
+            class="rounded mb-3 cursor-pointer hover:opacity-80"
+            onclick="openModal('/images/progress-tracking-preview.png')">
           <h3 class="font-semibold text-lg mb-1">📊 Progress Tracker</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300">Track completion, mastery level, and what's left to
             review.</p>
@@ -360,6 +372,18 @@
   </div>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = imageSrc;
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+    }
   </script>
 </body>
 
